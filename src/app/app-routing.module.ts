@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { PageNotFoundComponent } from './shared/page-not-found/page-not-found.component';
 import { MainComponent } from './core/main/main.component';
+import { UsersComponent } from './usuario/users/users.component';
+
 
 export const routes: Routes = [
   {
@@ -9,6 +11,15 @@ export const routes: Routes = [
     component: MainComponent,
     data: {
       title: 'Início',
+      icon: 'dashboard',
+      active: false
+    }
+  },
+  {
+    path: 'users',
+    component: UsersComponent,
+    data: {
+      title: 'Users',
       icon: 'dashboard',
       active: false
     }

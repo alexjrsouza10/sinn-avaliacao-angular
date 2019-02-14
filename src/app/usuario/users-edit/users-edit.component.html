@@ -1,0 +1,15 @@
+<form>
+  <div>
+    <img class="img-modal" src="{{usuario.avatar}}">
+  </div>
+  <mat-form-field style="margin-top: 10px">
+    <input matInput placeholder="Nome" name="first_name" [(ngModel)]="usuario.first_name" type="text">
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput placeholder="Sobrenome" name="last_name" [(ngModel)]="usuario.last_name" type="text">
+  </mat-form-field>
+  <div>
+      <button mat-raised-button color="primary" (click)="update(usuario.id)">Salvar</button>
+      <button mat-raised-button color="primary" (click)="closed()">Fechar</button>
+  </div>
+</form>

@@ -1,0 +1,50 @@
+<div class="mat-elevation-z8">
+  <ng-container *ngIf="msgVisible">
+    <div class="alert {{alertaMensagem}}" ng-hide="msgVisible">
+      <strong>{{msgTexto}}</strong>
+    </div>
+  </ng-container>
+  <form>
+  <mat-toolbar color="primary">
+    <span>Usuários</span>
+    <button class="bnt-new-user" title="New User" mat-raised-button color="primary" (click)="openNew()">+<i class="material-icons" style="margin-top: -13px">account_circle</i></button>
+  </mat-toolbar>
+</form>
+  <mat-table [dataSource]="usuarios" class="mat-elevation-z8" matSort>
+    <!-- Avatar-->
+    <ng-container matColumnDef="Avatar" mat-paginator>
+      <mat-header-cell *matHeaderCellDef style="text-align: center" mat-sort-header>Usuário</mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        <img class="img-avatar" src="{{element.avatar}}">
+      </mat-cell>
+    </ng-container>
+
+    <!-- Nome-->
+    <ng-container matColumnDef="Nome" mat-paginator>
+      <mat-header-cell *matHeaderCellDef style="margin-left: 70px" mat-sort-header>Nome</mat-header-cell>
+      <mat-cell *matCellDef="let element" style="text-align: center">
+        {{element.first_name}} {{element.last_name}}
+      </mat-cell>
+    </ng-container>
+
+    <!-- Valor Total-->
+    <ng-container matColumnDef="Editar">
+      <mat-header-cell *matHeaderCellDef style="margin-right: 20px;">Editar</mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        <button mat-raised-button color="primary" (click)="openEdit(element)">Editar</button>
+      </mat-cell>
+    </ng-container>
+
+    <!-- Data Column-->
+    <ng-container matColumnDef="Excluir">
+      <mat-header-cell *matHeaderCellDef>Excluir</mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        <button mat-raised-button color="primary" (click)="delete(element)">Excluir</button>
+      </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+  <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+</div>
